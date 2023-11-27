@@ -12,13 +12,13 @@ import AppLocaleProvider from '../@crema/utility/AppLocaleProvider';
 import FirebaseAuthProvider from '../@crema/services/auth/firebase/FirebaseAuthProvider';
 import AuthRoutes from '../@crema/utility/AuthRoutes';
 import {PersistGate} from 'redux-persist/integration/react';
-// import {useStore} from '../redux/store'; // Client-side cache, shared for the whole session of the user in the browser.
 import {EmotionCache} from '@emotion/cache';
 import '../@crema/services/index';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../../public/assets/styles/index.css';
 import '../shared/vendors/index.css';
 import {persistor, store} from 'redux/store';
+import {RequestInterceptor} from 'api/RequestInterceptor';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -29,7 +29,6 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
-  // const store = useStore(pageProps.initialReduxState);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -43,12 +42,14 @@ export default function MyApp(props: MyAppProps) {
             <AppThemeProvider>
               <AppStyleProvider>
                 <AppLocaleProvider>
-                  <FirebaseAuthProvider>
-                    <AuthRoutes>
-                      <CssBaseline />
-                      <Component {...pageProps} />
-                    </AuthRoutes>
-                  </FirebaseAuthProvider>
+                  <RequestInterceptor>
+                    <FirebaseAuthProvider>
+                      <AuthRoutes>
+                        <CssBaseline />
+                        <Component {...pageProps} />
+                      </AuthRoutes>
+                    </FirebaseAuthProvider>
+                  </RequestInterceptor>
                 </AppLocaleProvider>
               </AppStyleProvider>
             </AppThemeProvider>

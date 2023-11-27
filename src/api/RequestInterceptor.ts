@@ -46,7 +46,6 @@ const useRequestInterceptor = () => {
   const store = useStore();
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    console.log('useRequestInterceptor');
     const apiRequestInterceptor = (config: AxiosRequestConfig) => {
       const {accessToken} = store.getState().auth;
       if (accessToken) {

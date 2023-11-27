@@ -1,0 +1,67 @@
+export const API_ENDPOINTS = {
+  auth: {
+    login: '/vmanagement/auth/phone',
+    logout: '/vid/api/auth/logout',
+    code_challenge: '/vid/api/auth/code/exchange',
+    check_password: '/vid/api/users/me/password/checking',
+  },
+  user: {
+    profile: '/vcms/users/me',
+    cover: '/vcms/users/me/cover',
+    avatar: '/vcms/users/me/avatar',
+    avatarEnterprises: '/vcms/enterprises/me/{enterpriseId}/avatar',
+    list_profile: '/vcms/profiles/me',
+  },
+  shops: {
+    get_shop: '/vshop/shops/me/{shopId}',
+  },
+  pick_lists: {
+    get_pick_lists: '/vshop/configuration/pick-lists/search',
+    get_pick_list_by_id: '/vshop/configuration/pick-lists/',
+    create_pick_list: '/vshop/configuration/pick-lists/',
+    update_pick_list: '/vshop/configuration/pick-lists/',
+    delete_pick_list: '/vshop/configuration/pick-lists/v2/{pickListId}',
+  },
+  property: {
+    get_property_list: '/vshop/configuration/properties/search',
+    get_property_by_id: '/vshop/configuration/properties/',
+    create_property: '/vshop/configuration/properties/',
+    update_property: '/vshop/configuration/properties/',
+    delete_property: '/vshop/configuration/properties/v2/{propertyId}',
+  },
+  configuration_management: {
+    cart: '/vshop/forms/',
+    category: '/vshop/form/property/types',
+    pick_lists: '/vshop/pick-lists',
+    property_list: '/vshop/form/properties',
+    cart_form_export: '/vshop/forms/export',
+  },
+  cart_management: {
+    cart: '/vshop/carts/',
+    inventory_table: '/vshop/inventory-tables',
+    addCart: '/vshop/carts',
+    deleteCart: '/vshop/carts',
+    delete_inventory_table: '/vshop/inventory-tables',
+  },
+  category: {
+    estate_types: '/vshop/estate-types/',
+    provinces: '/vhb/address/provinces/',
+    districts: '/vhb/address/provinces/{provinceId}/districts',
+    wards: '/vhb/address/provinces/{provinceId}/districts/{districtId}/wards',
+    investors: '/vland/investors',
+    app_params: '/vhb/app/params',
+  },
+  inventory: {
+    get_inventory_detail: '/vshop/inventories/',
+    get_inventories_by_table_id: '/vshop/inventories/{tableId}/table',
+    delete_inventory: '/vshop/inventories/',
+    get_inventory_init_create: '/vshop/inventories/{inventoryTableId}/init',
+    import_excel_form: '/vshop/excel/import',
+    get_excel_records_by_key: '/vshop/excel/get-records',
+  },
+  common: {
+    upload_file: '/vshop/files/upload',
+    download_file: '/vshop/files/download',
+    delete_file: '/vshop/files/',
+  },
+};

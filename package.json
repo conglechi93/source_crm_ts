@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "pkce-challenge": "^3.0.0",
     "@auth0/auth0-react": "^1.8.0",
     "@aws-amplify/auth": "^4.3.10",
     "@babel/runtime": "^7.15.4",
@@ -25,6 +26,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/react-redux": "^7.1.31",
+    "antd": "^5.11.4",
     "apexcharts": "^3.29.0",
     "autosuggest-highlight": "^3.2.0",
     "axios": "^0.21.4",
