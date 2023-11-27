@@ -1,36 +1,20 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import reducers from '../reducers';
-import {useMemo} from 'react';
-// import {persistStore} from 'redux-persist';
+// src/redux/store.js
+import {configureStore} from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import {persistReducer, persistStore} from 'redux-persist';
+import thunk from 'redux-thunk';
+import reducers from 'redux/reducers';
 
-const rootReducer = combineReducers({
-  ...reducers,
-});
-
-export type AppState = ReturnType<typeof rootReducer>;
-
-function initStore(initialState?: AppState) {
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(thunkMiddleware),
-  );
-}
-
-export const initializeStore = (preloadedState) => {
-  let _store = initStore(preloadedState);
-
-  // After navigating to a page with an initial Redux state, merge that state
-  // with the current state in the store, and create a new store
-  if (preloadedState) {
-    _store = initStore({
-      ...preloadedState,
-    });
-  }
-  return _store;
+const persistConfig = {
+  key: 'root',
+  storage,
 };
 
-export function useStore(initialState) {
-  return useMemo(() => initializeStore(initialState), [initialState]);
-}
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
+});
+
+export const persistor = persistStore(store);

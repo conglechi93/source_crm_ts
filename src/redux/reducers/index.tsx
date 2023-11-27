@@ -10,19 +10,28 @@ import WallApp from './WallApp';
 import ToDoApp from './ToDoApp';
 import UserList from './UserList';
 import Auth from './Auth';
-// import {persistReducer} from 'redux-persist';
+import {combineReducers} from 'redux';
+import {persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   blacklist: [''],
-//   whitelist: ['accessToken', 'refreshToken', 'isAuthenticated'],
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  blacklist: [''],
+  whitelist: ['accessToken', 'refreshToken', 'isAuthenticated'],
+};
 
-const reducers = {
+const dashboardPersistConfig = {
+  key: 'dashboard',
+  storage,
+  blacklist: [''],
+  whitelist: ['number'],
+};
+
+const reducers = combineReducers({
   settings: Settings,
-  // auth: persistReducer(authPersistConfig, Auth),
-  dashboard: Dashboard,
+  auth: persistReducer(authPersistConfig, Auth),
+  dashboard: persistReducer(dashboardPersistConfig, Dashboard),
   ecommerce: Ecommerce,
   common: Common,
   chatApp: ChatApp,
@@ -32,6 +41,6 @@ const reducers = {
   wallApp: WallApp,
   todoApp: ToDoApp,
   userList: UserList,
-};
+});
 
 export default reducers;

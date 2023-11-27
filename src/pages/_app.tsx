@@ -11,12 +11,14 @@ import AppStyleProvider from '../@crema/utility/AppStyleProvider';
 import AppLocaleProvider from '../@crema/utility/AppLocaleProvider';
 import FirebaseAuthProvider from '../@crema/services/auth/firebase/FirebaseAuthProvider';
 import AuthRoutes from '../@crema/utility/AuthRoutes';
-import {useStore} from '../redux/store'; // Client-side cache, shared for the whole session of the user in the browser.
+import {PersistGate} from 'redux-persist/integration/react';
+// import {useStore} from '../redux/store'; // Client-side cache, shared for the whole session of the user in the browser.
 import {EmotionCache} from '@emotion/cache';
 import '../@crema/services/index';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../../public/assets/styles/index.css';
 import '../shared/vendors/index.css';
+import {persistor, store} from 'redux/store';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -27,7 +29,7 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
-  const store = useStore(pageProps.initialReduxState);
+  // const store = useStore(pageProps.initialReduxState);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -37,18 +39,20 @@ export default function MyApp(props: MyAppProps) {
       </Head>
       <AppContextProvider>
         <Provider store={store}>
-          <AppThemeProvider>
-            <AppStyleProvider>
-              <AppLocaleProvider>
-                <FirebaseAuthProvider>
-                  <AuthRoutes>
-                    <CssBaseline />
-                    <Component {...pageProps} />
-                  </AuthRoutes>
-                </FirebaseAuthProvider>
-              </AppLocaleProvider>
-            </AppStyleProvider>
-          </AppThemeProvider>
+          <PersistGate loading={null} persistor={persistor}>
+            <AppThemeProvider>
+              <AppStyleProvider>
+                <AppLocaleProvider>
+                  <FirebaseAuthProvider>
+                    <AuthRoutes>
+                      <CssBaseline />
+                      <Component {...pageProps} />
+                    </AuthRoutes>
+                  </FirebaseAuthProvider>
+                </AppLocaleProvider>
+              </AppStyleProvider>
+            </AppThemeProvider>
+          </PersistGate>
         </Provider>
       </AppContextProvider>
     </CacheProvider>
