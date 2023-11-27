@@ -9,6 +9,14 @@ import ContactApp from './ContactApp';
 import WallApp from './WallApp';
 import ToDoApp from './ToDoApp';
 import UserList from './UserList';
+// import storage from 'redux-persist/lib/storage';
+
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   blacklist: [''],
+//   whitelist: ['accessToken', 'refreshToken', 'isAuthenticated'],
+// };
 
 const reducers = {
   settings: Settings,
