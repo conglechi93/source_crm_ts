@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '@mui/material/Button';
 import IntlMessages from '../../../../@crema/utility/IntlMessages';
 import {alpha, Box} from '@mui/material';
@@ -6,14 +6,31 @@ import CoinsInfo from './CoinsInfo';
 import {Fonts} from '../../../../shared/constants/AppEnums';
 import AppCard from '../../../../@crema/core/AppCard';
 import {TotalBalanceData} from 'types/models/dashboards/Crypto';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppState} from '@auth0/auth0-react';
+import {onSetNumber} from 'redux/actions';
 
 interface TotalBalanceProps {
   totalBalanceData: TotalBalanceData;
 }
 
 const TotalBalance: React.FC<TotalBalanceProps> = ({totalBalanceData}) => {
+  const {number} = useSelector<AppState, AppState['dashboard']>(
+    ({dashboard}) => dashboard,
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log('number: ', number);
+  }, [number]);
   return (
     <Box>
+      <Button
+        onClick={() => {
+          dispatch(onSetNumber(number + 1));
+        }}
+      >
+        Set Number
+      </Button>
       <Box
         component='h2'
         sx={{

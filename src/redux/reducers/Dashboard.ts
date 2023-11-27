@@ -8,6 +8,7 @@ import {
   GET_HEALTH_CARE_DATA,
   GET_METRICS_DATA,
   GET_WIDGETS_DATA,
+  SET_NUMBER,
 } from '../../types/actions/Dashboard.action';
 import {Metrics} from '../../types/models/dashboards/Metrics';
 import {Analytics} from '../../types/models/dashboards/Analytics';
@@ -27,6 +28,7 @@ const initialState: {
   cryptoData: Crypto | null;
   metricsData: Metrics | null;
   widgetsData: Widgets | null;
+  number: number;
 } = {
   ecommerceData: null,
   healthCare: null,
@@ -36,10 +38,16 @@ const initialState: {
   cryptoData: null,
   metricsData: null,
   widgetsData: null,
+  number: 0,
 };
 
 const Dashboard = (state = initialState, action: DashboardActionTypes) => {
   switch (action.type) {
+    case SET_NUMBER:
+      return {
+        ...state,
+        number: action.payload,
+      };
     case GET_ANALYTICS_DATA:
       return {
         ...state,

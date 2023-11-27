@@ -69,4 +69,5 @@ export type DashboardActionTypes =
   | GetCRMAction
   | GetCryptosAction
   | GetMetricsAction
-  | GetWidgetsAction;
+  | GetWidgetsAction
+  | SetNumberAction;

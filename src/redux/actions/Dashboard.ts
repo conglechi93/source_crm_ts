@@ -10,8 +10,15 @@ import {
   GET_HEALTH_CARE_DATA,
   GET_METRICS_DATA,
   GET_WIDGETS_DATA,
+  SET_NUMBER,
 } from '../../types/actions/Dashboard.action';
 import jwtAxios from '../../@crema/services/auth/jwt-auth';
+
+export const onSetNumber = (number: number) => {
+  return (dispatch: Dispatch<AppActions>) => {
+    dispatch({type: SET_NUMBER, payload: number});
+  };
+};
 
 export const onGetAcademyData = () => {
   return (dispatch: Dispatch<AppActions>) => {
