@@ -6,6 +6,7 @@ export const SHOW_MESSAGE = 'show_message';
 export const HIDE_MESSAGE = 'hide_message';
 export const TOGGLE_APP_DRAWER = 'toggle_app_drawer';
 export const UPDATING_CONTENT = 'updating_content';
+export const CLEAN_STATE = 'clean_state';
 
 //APP SETTING
 export const TOGGLE_NAV_COLLAPSED = 'toggle_nav_collapsed';

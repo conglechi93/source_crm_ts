@@ -135,7 +135,7 @@
     "commitlint-plugin-jira-rules": "^1.4.0",
     "eslint": "^8.7.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.28.0",
     "husky": "^4.3.7",

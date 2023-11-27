@@ -19,3 +19,15 @@ export const defaultUser: AuthUser = {
   photoURL: '/assets/images/avatar/A11.jpg',
 };
 export const initialUrl = '/dashboards/crypto'; // this url will open after login
+
+export const apiTimeout = 20000;
+export const apiHeaders = {
+  'Content-Type': 'application/json',
+  Accept: '*/*',
+  'Access-Control-Allow-Credentials': true,
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, *',
+  'Accept-Language': 'vi',
+  'Content-Security-Policy': 'ALLOWALL',
+};
