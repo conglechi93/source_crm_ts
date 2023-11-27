@@ -9,7 +9,8 @@ import ContactApp from './ContactApp';
 import WallApp from './WallApp';
 import ToDoApp from './ToDoApp';
 import UserList from './UserList';
-// import storage from 'redux-persist/lib/storage';
+import Auth from './Auth';
+// import {persistReducer} from 'redux-persist';
 
 // const authPersistConfig = {
 //   key: 'auth',
@@ -20,6 +21,7 @@ import UserList from './UserList';
 
 const reducers = {
   settings: Settings,
+  // auth: persistReducer(authPersistConfig, Auth),
   dashboard: Dashboard,
   ecommerce: Ecommerce,
   common: Common,

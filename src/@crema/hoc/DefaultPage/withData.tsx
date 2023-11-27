@@ -9,6 +9,7 @@ const withData = (ComposedComponent) => (props) => {
   const {asPath} = useRouter();
   const queryParams = asPath.split('?')[1];
   useEffect(() => {
+    console.log('user', user);
     if (user) {
       Router.push(initialUrl + (queryParams ? '?' + queryParams : ''));
     }

@@ -2,6 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import reducers from '../reducers';
 import {useMemo} from 'react';
+// import {persistStore} from 'redux-persist';
 
 const rootReducer = combineReducers({
   ...reducers,
@@ -27,7 +28,6 @@ export const initializeStore = (preloadedState) => {
       ...preloadedState,
     });
   }
-
   return _store;
 };
 

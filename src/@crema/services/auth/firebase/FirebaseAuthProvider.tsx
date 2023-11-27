@@ -135,9 +135,7 @@ const FirebaseAuthProvider: React.FC<FirebaseAuthProviderProps> = ({
   };
 
   const signInWithEmailAndPassword = async ({email, password}: SignInProps) => {
-    console.log('1');
     dispatch(fetchStart());
-    console.log('2');
     try {
       const {user} = await auth.signInWithEmailAndPassword(email, password);
       setFirebaseData({
