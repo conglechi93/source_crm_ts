@@ -15,7 +15,12 @@ export const GET_CRM_DATA = 'GET_CRM_DATA';
 export const GET_CRYPTO_DATA = 'GET_CRYPTO_DATA';
 export const GET_METRICS_DATA = 'GET_METRICS_DATA';
 export const GET_WIDGETS_DATA = 'GET_WIDGETS_DATA';
+export const SET_NUMBER = 'SET_NUMBER';
 
+export interface SetNumberAction {
+  type: typeof SET_NUMBER;
+  payload: number;
+}
 export interface GetAnalyticsAction {
   type: typeof GET_ANALYTICS_DATA;
   payload: Analytics;
