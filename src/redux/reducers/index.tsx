@@ -10,6 +10,7 @@ import WallApp from './WallApp';
 import ToDoApp from './ToDoApp';
 import UserList from './UserList';
 import Auth from './Auth';
+import Shop from './Shop';
 import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -41,6 +42,7 @@ const reducers = combineReducers({
   wallApp: WallApp,
   todoApp: ToDoApp,
   userList: UserList,
+  shop: Shop,
 });
 
 export default reducers;
